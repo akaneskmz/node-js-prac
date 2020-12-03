@@ -73,7 +73,7 @@ const get_steam_screenshots = (req, res) => {
                   // DBからタイトルJSON取得
                   client.query('update steam_screenshots_title set json = $1 where id = 0', [json])
                   .then((result) => {
-                    console.log(result);
+                    console.log("update " + result.rowCount);
                   })
                   .finally(() => {
                     client.release();
