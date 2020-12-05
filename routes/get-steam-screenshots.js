@@ -16,7 +16,7 @@ const get_steam_screenshots = (req, res) => {
   console.log(LIST_URL);
   request({ url: LIST_URL, encoding: null },
         async (error, response, body) => {
-              if (!error && response.statusCode == 200) {
+            if (!error && response.statusCode == 200) {
                 const client = await pool.connect();
                 const $ = cheerio.load(body);
                 let json = {};
@@ -78,14 +78,16 @@ const get_steam_screenshots = (req, res) => {
                     console.log("update " + result.rowCount);
                   })
                   .finally(() => {
+                    console.log("p.then: ");
+                    console.log(p);
                     client.release();
                   });
                   
                   let data = {screenshots: screenshots};
                   res.render('pages/get_steam_screenshots', data);
                 });
-          }
-    });
+            }
+        });
 };
 
 module.exports = get_steam_screenshots;
