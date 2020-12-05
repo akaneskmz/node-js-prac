@@ -17,6 +17,7 @@ const get_steam_screenshots = (req, res) => {
   request({ url: LIST_URL, encoding: null },
         async (error, response, body) => {
             if (!error && response.statusCode == 200) {
+                console.logs(body);
                 const client = await pool.connect();
                 const $ = cheerio.load(body);
                 let json = {};
