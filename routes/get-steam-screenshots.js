@@ -17,7 +17,6 @@ const get_steam_screenshots = (req, res) => {
   request({ url: LIST_URL, encoding: null },
     async (error, response, body) => {
       if (!error && response.statusCode == 200) {
-        console.log(body.toString());
         const client = await pool.connect();
         const $ = cheerio.load(body);
         let json = {};
@@ -34,14 +33,12 @@ const get_steam_screenshots = (req, res) => {
         let p = [];
         let screenshots = []
         $(".profile_media_item").each((i, elem) => {
-          console.log('each profile_media_item');
           let ss = {}
           screenshots.push(ss);
           p.push(new Promise((resolve, reject) => {
             const q = $('.imgWallHoverDescription q', elem);
             const title = q.length ? q.text() : "(untitled)";
             ss['title'] = title
-            console.log("title: " + title);
             const node = $('div.imgWallItem', elem);
             const node_id = node['0']['attribs']['id'];
             const item_id = node_id.replace('imgWallItem_', '');
@@ -79,7 +76,6 @@ const get_steam_screenshots = (req, res) => {
               console.log("update " + result.rowCount);
             })
             .finally(() => {
-              console.log("p.then: ");
               console.log(p);
               client.release();
             });
