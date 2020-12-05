@@ -80,7 +80,7 @@ const get_steam_screenshots = (req, res) => {
               client.release();
             });
 
-          let data = { screenshots: screenshots };
+          let data = { url: process.env.GET_STEAM_SCREENSHOTS_URL, user_name: process.env.STEAM_USER, screenshots: screenshots };
           res.render('pages/get_steam_screenshots', data);
         });
       }

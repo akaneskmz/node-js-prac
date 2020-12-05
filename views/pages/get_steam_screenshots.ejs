@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
 <channel>
-   <atom:link href="http://akaneskmz.sakura.ne.jp/get-steam-screenshots.php" rel="self" type="application/rss+xml" />
-    <title>Screenshots for akaneskmz</title>
-    <link>http://steamcommunity.com/id/akaneskmz/screenshots/</link>
-    <description>Showing screenshots from akaneskmz</description>
+   <atom:link href="<%= url %>" rel="self" type="application/rss+xml" />
+    <title>Screenshots for <%= user_name %></title>
+    <link>http://steamcommunity.com/id/<%= user_name %>/screenshots/</link>
+    <description>Showing screenshots from <%= user_name %></description>
     <language>ja</language>
-    <copyright>Feed copyright akaneskmz, images copyright their respective owners</copyright>
+    <copyright>Feed copyright <%= user_name %>, images copyright their respective owners</copyright>
     <% for (let ss of screenshots) { %>
     <item>
         <title><![CDATA[<%= ss.title %> [<%= ss.game_title %>]]]></title>
