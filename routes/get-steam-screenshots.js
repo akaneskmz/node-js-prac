@@ -41,7 +41,7 @@ const get_steam_screenshots = (req, res) => {
             const q = $('.imgWallHoverDescription q', elem);
             const title = q.length ? q.text() : "(untitled)";
             ss['title'] = title
-            console.logs("title: " + title);
+            console.log("title: " + title);
             const node = $('div.imgWallItem', elem);
             const node_id = node['0']['attribs']['id'];
             const item_id = node_id.replace('imgWallItem_', '');
