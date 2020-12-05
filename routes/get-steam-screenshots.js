@@ -33,12 +33,14 @@ const get_steam_screenshots = (req, res) => {
                 let p = [];
                 let screenshots = []
                 $(".profile_media_item").each((i, elem) => {
+                  console.logs('each profile_media_item');
                   let ss = {}
                   screenshots.push(ss);
                   p.push(new Promise((resolve, reject) => {
                     const q = $('.imgWallHoverDescription q', elem);
                     const title = q.length ? q.text() : "(untitled)";
                     ss['title'] = title
+                    console.logs("title: " + title);
                     const node = $('div.imgWallItem', elem);
                     const node_id = node['0']['attribs']['id'];
                     const item_id = node_id.replace('imgWallItem_', '');
