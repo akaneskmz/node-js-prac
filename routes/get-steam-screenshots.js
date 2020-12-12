@@ -81,6 +81,7 @@ const get_steam_screenshots = (req, res) => {
             });
 
           let data = { url: process.env.GET_STEAM_SCREENSHOTS_URL, user_name: process.env.STEAM_USER, screenshots: screenshots };
+          res.set('Content-Type', 'application/rss+xml');
           res.render('pages/get_steam_screenshots', data);
         });
       }
